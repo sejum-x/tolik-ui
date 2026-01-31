@@ -23,7 +23,7 @@ export const Widget: React.FC<WidgetProps> = ({ id, children, className, title, 
                 {onRemove && (
                     <button
                         onClick={() => onRemove(id)}
-                        className="opacity-0 group-hover:opacity-100 p-1 hover:bg-white/10 rounded-md transition-all text-text-secondary hover:text-white"
+                        className="opacity-0 group-hover:opacity-100 p-1 hover:bg-muted-bg rounded-md transition-all text-text-secondary hover:text-text-primary"
                     >
                         <X size={14} />
                     </button>

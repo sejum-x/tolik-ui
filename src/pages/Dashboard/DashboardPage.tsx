@@ -57,7 +57,7 @@ export const DashboardPage = () => {
                 <div className="flex gap-2">
                     <button
                         onClick={() => addWidget('RECENT_ACTIVITY', 'System Activity')}
-                        className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-border px-4 py-2 rounded-xl text-xs font-bold transition-all"
+                        className="flex items-center gap-2 bg-muted-bg hover:opacity-90 border border-border px-4 py-2 rounded-xl text-xs font-bold transition-all text-text-primary"
                     >
                         <Plus size={14} /> Add Activity Feed
                     </button>
@@ -95,7 +95,7 @@ export const DashboardPage = () => {
                         {widget.type === 'PROJECT_LIST' && (
                             <div className="space-y-4">
                                 {projects.map(p => (
-                                    <div key={p.id} className="flex justify-between items-center p-3 bg-white/5 rounded-xl border border-white/5">
+                                    <div key={p.id} className="flex justify-between items-center p-3 bg-muted-bg rounded-xl border border-muted-border">
                                         <div>
                                             <div className="font-bold text-sm">{p.title}</div>
                                             <div className="text-xs text-text-secondary">{p.status} • {p.lastModified}</div>

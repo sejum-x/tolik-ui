@@ -1,29 +1,57 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: add .dark to <html> to enable */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-    /* Main Dark Theme */
-    --color-bg-main: #0d0d0d;       /* Deepest black for page background */
-    --color-sidebar-bg: #141414;   /* Slightly lighter black for sidebar */
-    --color-card-bg: #1c1c1c;      /* Block background for widgets */
-
-    /* Text Colors */
-    --color-text-primary: #ffffff;
-    --color-text-secondary: #8e8e93;
-
-    /* Active State & Accents */
-    --color-active-bg: rgba(255, 255, 255, 0.1); /* Transparent white bubble */
+    /* Light defaults; overridden in .dark below (main app only) */
+    --color-bg-main: #f5f5f7;
+    --color-card-bg: #ffffff;
+    --color-text-primary: #1c1c1e;
+    --color-text-secondary: #6e6e73;
+    --color-active-bg: rgba(0, 0, 0, 0.06);
     --color-accent-blue: #3b82f6;
-    --color-border: rgba(255, 255, 255, 0.05);
+    --color-border: rgba(0, 0, 0, 0.08);
+    --color-muted-bg: rgba(0, 0, 0, 0.06);
+    --color-muted-border: rgba(0, 0, 0, 0.08);
+    --color-scrollbar-thumb: rgba(0, 0, 0, 0.2);
+
+    /* Sidebar: theme-aware (light defaults) */
+    --color-sidebar-bg: #eaeaea;
+    --color-sidebar-border: rgba(0, 0, 0, 0.08);
+    --color-sidebar-text: #1c1c1e;
+    --color-sidebar-muted: #6e6e73;
+    --color-sidebar-active: rgba(0, 0, 0, 0.08);
 }
 
-/* Reference Style: Dark Sidebar Active State */
+@layer base {
+    .dark {
+        --color-bg-main: #0d0d0d;
+        --color-card-bg: #1c1c1c;
+        --color-text-primary: #ffffff;
+        --color-text-secondary: #8e8e93;
+        --color-active-bg: rgba(255, 255, 255, 0.1);
+        --color-border: rgba(255, 255, 255, 0.05);
+        --color-muted-bg: rgba(255, 255, 255, 0.08);
+        --color-muted-border: rgba(255, 255, 255, 0.08);
+        --color-scrollbar-thumb: rgba(255, 255, 255, 0.15);
+        /* Sidebar dark */
+        --color-sidebar-bg: #141414;
+        --color-sidebar-border: rgba(255, 255, 255, 0.05);
+        --color-sidebar-text: #ffffff;
+        --color-sidebar-muted: #8e8e93;
+        --color-sidebar-active: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Reference Style: Theme-aware Sidebar Active State */
 .nav-item-active {
-    background: var(--color-active-bg) !important;
-    color: var(--color-text-primary) !important;
+    background: var(--color-sidebar-active) !important;
+    color: var(--color-sidebar-text) !important;
     border-radius: 12px;
 }
 
-/* Reference Style: Dark Dashboard Block */
+/* Reference Style: Theme-aware Dashboard Block */
 .dashboard-card {
     background: var(--color-card-bg);
     border: 1px solid var(--color-border);
@@ -36,11 +64,13 @@ body {
     margin: 0;
 }
 
-/* Scrollbar for the tree */
+/* Theme-aware scrollbar for main content */
 .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-scrollbar-thumb);
     border-radius: 10px;
 }
+
+/* Sidebar uses theme-aware scrollbar (same as main) */

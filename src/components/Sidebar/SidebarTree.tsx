@@ -16,7 +16,7 @@ export const SidebarTreeItem: React.FC<TreeItemProps> = ({ node, level = 0 }) =>
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 style={{ paddingLeft: `${level * 12 + 16}px` }}
-                className="w-full flex items-center justify-between py-1.5 pr-4 text-sm text-text-secondary hover:text-white hover:bg-white/5 transition-all rounded-lg group"
+                className="w-full flex items-center justify-between py-1.5 pr-4 text-sm text-sidebar-muted hover:text-sidebar-text hover:bg-sidebar-active transition-all rounded-lg group"
             >
                 <div className="flex items-center gap-2">
                     {hasChildren ? (
@@ -24,7 +24,7 @@ export const SidebarTreeItem: React.FC<TreeItemProps> = ({ node, level = 0 }) =>
                     ) : (
                         <div className="w-[14px]" />
                     )}
-                    {node.type === 'folder' ? <Folder size={16} className="text-gray-500" /> : <FileText size={16} className="text-gray-600" />}
+                    {node.type === 'folder' ? <Folder size={16} className="text-sidebar-muted" /> : <FileText size={16} className="text-sidebar-muted" />}
                     <span className="truncate">{node.label}</span>
                 </div>
                 {node.count !== undefined && (
@@ -34,7 +34,7 @@ export const SidebarTreeItem: React.FC<TreeItemProps> = ({ node, level = 0 }) =>
 
             {/* Render children recursively if the folder is open */}
             {isOpen && hasChildren && (
-                <div className="mt-1 border-l border-white/5 ml-4">
+                <div className="mt-1 border-l border-sidebar-border ml-4">
                     {node.children!.map((child) => (
                         <SidebarTreeItem key={child.id} node={child} level={level} />
                     ))}
