@@ -74,3 +74,8 @@ body {
 }
 
 /* Sidebar uses theme-aware scrollbar (same as main) */
+
+/* Range input accent */
+input[type="range"] {
+    accent-color: var(--color-accent-blue);
+}

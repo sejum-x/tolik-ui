@@ -24,6 +24,17 @@ export interface InvestigationProject {
     lastModified: string;
 }
 
+// Library project for the Projects Library page
+export interface LibraryProject {
+    id: string;
+    name: string;
+    description: string;
+    thumbnailUrl: string;
+    lastModified: string;
+    category: string;
+    status: 'Active' | 'Draft' | 'Archived';
+}
+
 // Define recursive structure for documents
 export interface DocumentNode {
     id: string;
